@@ -112,7 +112,7 @@ const Esperienza = () => {
   };
 
   const getExperiences = async () => {
-    if(myInfo!==undefined){
+    if(myInfo._id!==undefined){
           try {
       let response = await fetch(
         `https://striveschool-api.herokuapp.com/api/profile/${myInfo._id}/experiences`,
