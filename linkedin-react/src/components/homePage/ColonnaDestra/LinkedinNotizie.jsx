@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Card } from "react-bootstrap";
 
 const LinkedinNotizie = () => {
