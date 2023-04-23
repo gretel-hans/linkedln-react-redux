@@ -3,11 +3,17 @@
 import Container from "react-bootstrap/Container";
 import { Dropdown } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const CustomNavbar = () => {
   const myInfo = useSelector((state) => state.userInfo.me);
+  const mySecondInfo = useSelector((state) => state.myInfo.myInfo);
+  const location=useLocation()
+
+
+  
+  
 
   return (
     <Navbar bg="light" variant="light" className="fixed-top border py-0">
@@ -132,9 +138,10 @@ const CustomNavbar = () => {
             </li>
             <li className="">
               <div href={void(0)} className="d-flex flex-column align-items-center">
+
                 <img
                   style={{width: "25px", height: "25px"}}
-                  src={myInfo.image}
+                  src={location.pathname==='/profile/me'?myInfo.image:mySecondInfo.image}
                   alt="kitten"
                 />
 
