@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const CreazionePost = () => {
   const [show, setShow] = useState(false);
-  const [comment, setComment] = useState(null);
+  const [comment, setComment] = useState(undefined);
 
   const myInfo = useSelector((state) => state.myInfo.myInfo);
   const counter = useSelector((state) => state.counter.counter);
@@ -16,30 +16,6 @@ const CreazionePost = () => {
   const formData = new FormData();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  // const sendComment = () => {
-  //   return fetch("https://striveschool-api.herokuapp.com/api/posts", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: token,
-  //     },
-  //     body: JSON.stringify({ text: comment }),
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         // eslint-disable-next-line no-sequences
-  //         return response.json(), alert("Your comment has been posted!"),dispatch({
-  //           type:'UPDATE_COUNTER',
-  //           payload:counter+1
-  //         })
-
-  //       } else {
-  //         alert("ERROR your comment hasn't been posted!");
-  //       }
-  //     })
-  //     .catch((error) => console.log("ERROR", error));
-  // };
 
   const sendComment = async () => {
     try {
@@ -77,8 +53,8 @@ const CreazionePost = () => {
           );
 
           if (response2.ok) {
-            const data2 = await response2.json();
-            console.log(data2);
+           // const data2 = await response2.json();
+            //console.log(data2);
             dispatch({
               type: "UPDATE_COUNTER",
               payload: counter + 1,
@@ -376,10 +352,10 @@ const CreazionePost = () => {
                 <button
                   type="button"
                   className="rounded-pill px-3 py-1 btn btn-primary me-2"
-                  disabled={comment ? false : true}
+                  disabled={comment===undefined || comment==='' ? true : false}
                   onClick={() => {
                     handleClose();
-                    setComment(null);
+                    setComment(undefined);
                     sendComment();
                   }}
                 >
