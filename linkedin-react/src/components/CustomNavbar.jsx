@@ -138,7 +138,6 @@ const CustomNavbar = () => {
             </li>
             <li className="">
               <div href={void(0)} className="d-flex flex-column align-items-center">
-
                 <img
                   style={{width: "25px", height: "25px"}}
                   src={location.pathname==='/profile/me'?myInfo.image:mySecondInfo.image}
