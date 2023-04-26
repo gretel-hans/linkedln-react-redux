@@ -16,6 +16,7 @@ const CreazionePost = () => {
   const formData = new FormData();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  let file=null
 
   const sendComment = async () => {
     try {
@@ -31,13 +32,16 @@ const CreazionePost = () => {
         }
       );
 
-      if (response1.ok) {
-        const data1 = await response1.json();
-        const postId = data1._id;
+      if(response1.ok&&!file){
         dispatch({
           type: "UPDATE_COUNTER",
           payload: counter + 1,
         });
+      }
+
+      if (response1.ok&&file) {
+        const data1 = await response1.json();
+        const postId = data1._id;
   
         if (formData.has("post")) {
   
@@ -180,7 +184,7 @@ const CreazionePost = () => {
                 <Form.Control
                   type="file"
                   onChange={(e) => {
-                    const file = e.target.files[0];
+                     file = e.target.files[0];
                     formData.append("post", file);
                   }}
                 />
