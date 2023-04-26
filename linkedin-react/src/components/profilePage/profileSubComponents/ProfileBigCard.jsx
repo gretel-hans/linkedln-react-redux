@@ -135,6 +135,7 @@ const ProfileBigCard = () => {
         <span className="text-primary" style={{ cursor: "pointer" }}>
           78 collegamenti{" "}
         </span>
+        {location.pathname==='/profile/me'?(<>
         <div className=" my-3 ProfilePicButtons">
           <button
             type="button"
@@ -155,6 +156,31 @@ const ProfileBigCard = () => {
             Altro
           </button>
         </div>
+        </>):(
+          <>
+          <div className=" my-3 ProfilePicButtons">
+          <button
+            type="button"
+            className="rounded-pill px-3 py-1 btn btn-primary me-2 d-flex align-items-center"
+          >
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
+  <path d="M14 2L0 6.67l5 2.64 5.67-3.98L6.7 11l2.63 5L14 2z"></path>
+</svg> <span className="ms-1">Messaggio  </span>
+          </button>
+          <button
+            type="button"
+            className="rounded-pill px-3 py-1 btn btn-outline-secondary"
+          >
+            Altro
+          </button>
+        </div>
+          
+          </>
+        )
+
+        }
+        
+
         <div className="carousel container mt-3">
           <div className="carouselCard1 d-flex me-2">
             <div className="carouselTextContainer">

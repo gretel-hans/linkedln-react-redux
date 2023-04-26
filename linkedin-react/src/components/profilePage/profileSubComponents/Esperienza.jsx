@@ -44,7 +44,7 @@ const Esperienza = () => {
   const formData = new FormData();
   const formDataExperienceImg = new FormData();
   const ModifyFormData = new FormData();
-  let file = null;
+  let file = undefined;
 
   const addExperience = async () => {
     if (esperienza.endDate === undefined) {
@@ -62,7 +62,7 @@ const Esperienza = () => {
           body: JSON.stringify(esperienza),
         }
       );
-      if (response.ok && !file) {
+      if (response.ok && file===undefined) {
         setCounter(counter + 1);
       }
       if (response.ok) {
@@ -178,7 +178,7 @@ const Esperienza = () => {
           body: JSON.stringify(experienceModInfo),
         }
       );
-      if (response.ok && !file) {
+      if (response.ok && file===undefined) {
         alert("Hai modificato correttamente la tua esperienza.");
         setCounter(counter + 1);
       }
@@ -198,11 +198,7 @@ const Esperienza = () => {
         if (response2.ok) {
           alert("Hai modificato correttamente la tua esperienza.");
           setCounter(counter + 1);
-        } else {
-          throw new Error("Errore nella modifica dell'esperienza");
         }
-      } else {
-        throw new Error("Errore nella modifica dell'esperienza");
       }
     } catch (error) {
       console.log("ERROR", error);
@@ -301,7 +297,7 @@ const Esperienza = () => {
                   <Form.Control
                     type="file"
                     onChange={(e) => {
-                      const file = e.target.files[0];
+                       file = e.target.files[0];
                       formDataExperienceImg.append("experience", file);
                     }}
                   />
@@ -326,7 +322,13 @@ const Esperienza = () => {
             let startDate = new Date(experience.startDate);
             let startYear = startDate.getFullYear();
             let endDate = new Date(experience.endDate);
-            let endYear = endDate.getFullYear();
+            let endYear;
+            
+              if( experience.endDate) {
+endYear= endDate.getFullYear();
+              } 
+            
+             
             return (
               <div key={index}>
                 <Card className="my-3 insideCards position-relative">
@@ -358,6 +360,8 @@ const Esperienza = () => {
                       </Card.Body>
 
                       <div className="dotsDivAbsolute">
+
+
                         <Dropdown>
                           {location === "/profile/me" && (
                             <>
@@ -370,9 +374,12 @@ const Esperienza = () => {
                             </>
                           )}
 
-                          <Dropdown.Menu className="p-3 d-flex flex-column">
+                          <Dropdown.Menu >
+                            <div className="px-3 d-flex flex-column">
+
+                            
                             <div
-                              className="mb-2 cursor"
+                              className="m-1 cursor"
                               onClick={() => {
                                 if (
                                   window.confirm(
@@ -380,14 +387,14 @@ const Esperienza = () => {
                                   )
                                 ) {
                                   cancelExperience(experience._id);
-                                  console.log("esperienza eliminata");
+                                 // console.log("esperienza eliminata");
                                 }
                               }}
                             >
                               Elimina{" "}
                             </div>
                             <div
-                              className="cursor"
+                              className="m-1 cursor"
                               onClick={() => {
                                 showExperienceMod();
                                 setExperienceModInfo(experience);
@@ -397,15 +404,18 @@ const Esperienza = () => {
                             >
                               Modifica{" "}
                             </div>
+                            </div>
                           </Dropdown.Menu>
                         </Dropdown>
+
+
                       </div>
                     </Col>
                   </Row>
                 </Card>
                 {index !== experiences.length - 1 ? (
                   <hr className="my-4" />
-                ) : null}
+                ) : <></>}
               </div>
             );
           })}
@@ -544,7 +554,7 @@ const Esperienza = () => {
                   value={
                     experienceModInfo.endDate
                       ? experienceModInfo.endDate.slice(0, 10)
-                      : null
+                      : <></>
                   }
                   onChange={(e) => {
                     setExperienceModInfo({
