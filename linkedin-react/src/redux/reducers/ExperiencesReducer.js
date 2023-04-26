@@ -8,7 +8,7 @@ const ExperiencesReducer = (state = InitialState, action) => {
         case 'ADD_TO_EXPERIENCES':
             return {
                 ...state,
-                experiences: action.payload
+                experiences: action.payload.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
             }
 
         default: return state
