@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 const SideProfileInfo = () => {
   const location = useLocation();
-  const myInfo = useSelector((state) => state.userInfo.me);
+  const mySecondInfo = useSelector((state) => state.myInfo.myInfo);
 
   return (
     <>
@@ -56,8 +56,11 @@ const SideProfileInfo = () => {
               </div>
             </Card.Body>
           </Card>
-          {/* seconda card con annuncio */}
-          <Card className="mb-2">
+          
+        </>
+      )}
+      {/* seconda card con annuncio */}
+      <Card className="mb-2">
             <Card.Body className="p-1">
               <div className="text-end" id="ad-dx">
                 <span>Annuncio</span>&nbsp;<i className="bi bi-three-dots"></i>
@@ -66,7 +69,7 @@ const SideProfileInfo = () => {
                 <small>Scopri le ultime offerte di lavoro</small>
                 <div className="d-flex justify-content-center my-2">
                   <img
-                    src={myInfo.image}
+                    src={mySecondInfo.image}
                     alt="placeholder"
                     className="rounded-circle"
                     style={{ width: "70px" }}
@@ -78,7 +81,7 @@ const SideProfileInfo = () => {
                     style={{ width: "70px" }}
                   />
                 </div>
-                <p>{myInfo.name}, scopri le opportunità offerte da XXX</p>
+                <p>{mySecondInfo.name}, scopri le opportunità offerte da XXX</p>
                 <div>
                   <Button
                     variant="outline-primary"
@@ -90,8 +93,6 @@ const SideProfileInfo = () => {
               </div>
             </Card.Body>
           </Card>
-        </>
-      )}
     </>
   );
 };

@@ -3,14 +3,43 @@
 import Container from "react-bootstrap/Container";
 import { Dropdown } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
-import { Link,useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useSelector,useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const CustomNavbar = () => {
-  const myInfo = useSelector((state) => state.userInfo.me);
   const mySecondInfo = useSelector((state) => state.myInfo.myInfo);
-  const location=useLocation()
+  const dispatch=useDispatch()
 
+  const getMyInfo= async ()=>{
+
+      try {
+        let response = await fetch(
+          "https://striveschool-api.herokuapp.com/api/profile/me",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:process.env.REACT_APP_API_KEY
+            },
+          }
+        );
+        let data = await response.json();
+        dispatch({
+          type: "HOMEPAGE_SAVE_MY_INFO",
+          payload: data,
+        });
+        //console.log("Dati", data);
+      } catch (error) {
+        console.log(error);
+      }
+    
+  }
+
+  useEffect(()=>{
+    getMyInfo()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   
   
@@ -138,18 +167,16 @@ const CustomNavbar = () => {
             </li>
             <li className="">
               <div href={void(0)} className="d-flex flex-column align-items-center">
-                <img
+                <Link to='/profile/me'> <img
                   style={{width: "25px", height: "25px"}}
-                  src={location.pathname==='/profile/me'?myInfo.image:mySecondInfo.image}
+                  src={mySecondInfo.image}
                   alt="kitten"
-                />
-
+                /> </Link>
                 <div className="d-none d-lg-inline m-0">
                   <Dropdown>
                     <Dropdown.Toggle id="dropdown-basic">
                Tu{" "}
                     </Dropdown.Toggle>
-
                     <Dropdown.Menu>
                       <Link className="dropdown-item" to='/profile/me'> Visualizza profilo</Link>
                     </Dropdown.Menu>
