@@ -16,10 +16,7 @@ const HomeProfile = () => {
           <Row className="d-flex flex-column">
             <Col>
               <div className="sidebarCover">
-                <img
-                  src="https://i.ibb.co/C6zmzQ2/cover-linkedin.jpg"
-                  alt=""
-                />
+                <img src="https://i.ibb.co/C6zmzQ2/cover-linkedin.jpg" alt="" />
               </div>
               <div className="position-relative">
                 <img
@@ -39,9 +36,13 @@ const HomeProfile = () => {
             </Col>
             <Col className="mt-5">
               <Link to={"/profile/me"} className="text-decoration-none">
-              <p className="sidebarProfileName mb-1">{myInfo.name}&nbsp;{myInfo.surname}</p>
+                <p className="sidebarProfileName mb-1">
+                  {myInfo.name}&nbsp;{myInfo.surname}
+                </p>
               </Link>
-              <p className="sidebarProfileRole">{myInfo.title} <br /> {myInfo.bio}</p>
+              <p className="sidebarProfileRole">
+                {myInfo.title} <br /> {myInfo.bio}
+              </p>
             </Col>
           </Row>
         </ListGroup.Item>
@@ -69,7 +70,7 @@ const HomeProfile = () => {
               Accedi a strumenti e informazioni in esclusiva
             </p>
             <Row className="d-flex flex-nowrap">
-                <Col xs={1}>
+              <Col xs={1}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -88,10 +89,15 @@ const HomeProfile = () => {
                     fill="#e7a33e"
                   ></path>
                 </svg>
-                </Col>
-                <Col xs={11}>
-                <p style={{cursor:"pointer"}} className="sidebarTextPremium mb-0">Fatti assumere più velocemente. <br /> Prova Premium gratis.</p>
-                </Col>
+              </Col>
+              <Col xs={11}>
+                <p
+                  style={{ cursor: "pointer" }}
+                  className="sidebarTextPremium mb-0"
+                >
+                  Fatti assumere più velocemente. <br /> Prova Premium gratis.
+                </p>
+              </Col>
             </Row>
           </div>
         </ListGroup.Item>
@@ -116,7 +122,7 @@ const HomeProfile = () => {
           </p>
         </ListGroup.Item>
       </ListGroup>
-      </Card>
+    </Card>
   );
 };
 

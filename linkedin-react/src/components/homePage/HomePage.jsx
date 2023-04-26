@@ -28,13 +28,13 @@ const HomePage = () => {
         {
           method: "GET",
           headers: {
-            Authorization:process.env.REACT_APP_API_KEY,
+            Authorization: process.env.REACT_APP_API_KEY,
           },
         }
       );
       if (response.ok) {
         let post = await response.json();
-       // console.log("tutti i post", post);
+        // console.log("tutti i post", post);
         let fiftyPost = post.reverse().slice(0, 50);
         dispatch({
           type: "SAVE_POST",
@@ -55,7 +55,7 @@ const HomePage = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization:process.env.REACT_APP_API_KEY
+            Authorization: process.env.REACT_APP_API_KEY,
           },
         }
       );
@@ -106,7 +106,7 @@ const HomePage = () => {
             <FooterHome2></FooterHome2>
           </div>
           <Messaggistica />
-          <ScrollToTopButton/>
+          <ScrollToTopButton />
         </Col>
       </Row>
     </Container>

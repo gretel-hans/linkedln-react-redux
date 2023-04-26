@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const OtherProfiles = () => {
   const dispatch = useDispatch();
@@ -16,15 +17,16 @@ const OtherProfiles = () => {
         {
           method: "GET",
           headers: {
-            Authorization:process.env.REACT_APP_API_KEY},
+            Authorization: process.env.REACT_APP_API_KEY,
+          },
         }
       );
       let data = await response.json();
 
       dispatch({
-        type: 'SAVE_ALL_PROFILES_INFO',
-        payload: data
-    });
+        type: "SAVE_ALL_PROFILES_INFO",
+        payload: data,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -32,7 +34,7 @@ const OtherProfiles = () => {
 
   useEffect(() => {
     getProfileData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleShowMore = () => {
@@ -93,25 +95,34 @@ const OtherProfiles = () => {
   return (
     <Card className="mb-2">
       <ListGroup variant="flush" className="p-3">
-          <h5>Altri profili consultati</h5>
+        <h5>Altri profili consultati</h5>
         {profiles.slice(0, visibleProfiles).map((profile) => (
           <ListGroup.Item key={profile._id}>
             <Row className="d-flex justify-content-start">
               <Col xs={2} className="p-0 p-sm-2">
-                <img
-                  src={profile.image}
-                  alt={profile.name}
-                  onError={(e)=>{
-                    e.currentTarget.src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'
-                }}
-                  style={{ width: "50px" }}
-                  className="rounded-circle"
-                />
+                <Link to={`/profile/${profile._id}`}>
+                  <img
+                    src={profile.image}
+                    alt={profile.name}
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
+                    }}
+                    style={{ width: "50px" }}
+                    className="rounded-circle"
+                  />
+                </Link>
               </Col>
               <Col xs={10}>
                 <div>
                   <h6 className="mb-1">
-                    {profile.name}&nbsp;{profile.surname}
+                    <Link
+                      to={`/profile/${profile._id}`}
+                      className="postUserName"
+                    >
+                      {" "}
+                      {profile.name}&nbsp;{profile.surname}
+                    </Link>
                   </h6>
                   <p className="mb-1">{profile.title}</p>
                   <Button
@@ -126,8 +137,8 @@ const OtherProfiles = () => {
             </Row>
           </ListGroup.Item>
         ))}
-          </ListGroup>
-        <Card.Footer id="showMore" onClick={handleShowMore}>
+      </ListGroup>
+      <Card.Footer id="showMore" onClick={handleShowMore}>
         {showMore ? (
           <>Visualizza altro {showMoreSvg}</>
         ) : (

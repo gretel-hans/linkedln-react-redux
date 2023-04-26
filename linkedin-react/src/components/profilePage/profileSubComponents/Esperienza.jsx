@@ -62,7 +62,7 @@ const Esperienza = () => {
           body: JSON.stringify(esperienza),
         }
       );
-      if (response.ok && file===undefined) {
+      if (response.ok && file === undefined) {
         setCounter(counter + 1);
       }
       if (response.ok) {
@@ -178,7 +178,7 @@ const Esperienza = () => {
           body: JSON.stringify(experienceModInfo),
         }
       );
-      if (response.ok && file===undefined) {
+      if (response.ok && file === undefined) {
         alert("Hai modificato correttamente la tua esperienza.");
         setCounter(counter + 1);
       }
@@ -297,7 +297,7 @@ const Esperienza = () => {
                   <Form.Control
                     type="file"
                     onChange={(e) => {
-                       file = e.target.files[0];
+                      file = e.target.files[0];
                       formDataExperienceImg.append("experience", file);
                     }}
                   />
@@ -323,12 +323,11 @@ const Esperienza = () => {
             let startYear = startDate.getFullYear();
             let endDate = new Date(experience.endDate);
             let endYear;
-            
-              if( experience.endDate) {
-endYear= endDate.getFullYear();
-              } 
-            
-             
+
+            if (experience.endDate) {
+              endYear = endDate.getFullYear();
+            }
+
             return (
               <div key={index}>
                 <Card className="my-3 insideCards position-relative">
@@ -360,8 +359,6 @@ endYear= endDate.getFullYear();
                       </Card.Body>
 
                       <div className="dotsDivAbsolute">
-
-
                         <Dropdown>
                           {location === "/profile/me" && (
                             <>
@@ -374,48 +371,46 @@ endYear= endDate.getFullYear();
                             </>
                           )}
 
-                          <Dropdown.Menu >
+                          <Dropdown.Menu>
                             <div className="px-3 d-flex flex-column">
-
-                            
-                            <div
-                              className="m-1 cursor"
-                              onClick={() => {
-                                if (
-                                  window.confirm(
-                                    "Vuoi davvero rimuovere questa esperienza"
-                                  )
-                                ) {
-                                  cancelExperience(experience._id);
-                                 // console.log("esperienza eliminata");
-                                }
-                              }}
-                            >
-                              Elimina{" "}
-                            </div>
-                            <div
-                              className="m-1 cursor"
-                              onClick={() => {
-                                showExperienceMod();
-                                setExperienceModInfo(experience);
-                                setIdExperience(experience._id);
-                                //console.log(experience._id)
-                              }}
-                            >
-                              Modifica{" "}
-                            </div>
+                              <div
+                                className="m-1 cursor"
+                                onClick={() => {
+                                  if (
+                                    window.confirm(
+                                      "Vuoi davvero rimuovere questa esperienza"
+                                    )
+                                  ) {
+                                    cancelExperience(experience._id);
+                                    // console.log("esperienza eliminata");
+                                  }
+                                }}
+                              >
+                                Elimina{" "}
+                              </div>
+                              <div
+                                className="m-1 cursor"
+                                onClick={() => {
+                                  showExperienceMod();
+                                  setExperienceModInfo(experience);
+                                  setIdExperience(experience._id);
+                                  //console.log(experience._id)
+                                }}
+                              >
+                                Modifica{" "}
+                              </div>
                             </div>
                           </Dropdown.Menu>
                         </Dropdown>
-
-
                       </div>
                     </Col>
                   </Row>
                 </Card>
                 {index !== experiences.length - 1 ? (
                   <hr className="my-4" />
-                ) : <></>}
+                ) : (
+                  <></>
+                )}
               </div>
             );
           })}
@@ -552,9 +547,11 @@ endYear= endDate.getFullYear();
                 <Form.Control
                   type="date"
                   value={
-                    experienceModInfo.endDate
-                      ? experienceModInfo.endDate.slice(0, 10)
-                      : <></>
+                    experienceModInfo.endDate ? (
+                      experienceModInfo.endDate.slice(0, 10)
+                    ) : (
+                      <></>
+                    )
                   }
                   onChange={(e) => {
                     setExperienceModInfo({

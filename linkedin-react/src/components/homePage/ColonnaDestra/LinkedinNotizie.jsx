@@ -38,7 +38,9 @@ const LinkedinNotizie = () => {
             <h6> Le Top Companies del 2023 in Italia</h6>
           </div>
           <small>
-            <p className="fw-light" id="dataNotizie">Notizie principali · 206 lettori</p>
+            <p className="fw-light" id="dataNotizie">
+              Notizie principali · 206 lettori
+            </p>
           </small>
         </a>
         <a href="#" className="listaNotizie">
@@ -47,7 +49,9 @@ const LinkedinNotizie = () => {
             <h6>Scaldare le case con la grappa</h6>
           </div>
           <small>
-            <p className="fw-light" id="dataNotizie">21 ore fa</p>
+            <p className="fw-light" id="dataNotizie">
+              21 ore fa
+            </p>
           </small>
         </a>
         <a href="#" className="listaNotizie">
@@ -56,7 +60,9 @@ const LinkedinNotizie = () => {
             <h6>Come si posiziona il soft pover italiano</h6>
           </div>
           <small>
-            <p className="fw-light" id="dataNotizie">Notizie principali · 206 lettori</p>
+            <p className="fw-light" id="dataNotizie">
+              Notizie principali · 206 lettori
+            </p>
           </small>
         </a>
         <a href="#" className="listaNotizie">
@@ -65,7 +71,9 @@ const LinkedinNotizie = () => {
             <h6>Pettinare le barbie con le forchette</h6>
           </div>
           <small>
-            <p className="fw-light" id="dataNotizie">4 giorni fa · 54 lettori</p>
+            <p className="fw-light" id="dataNotizie">
+              4 giorni fa · 54 lettori
+            </p>
           </small>
         </a>
         <a href="#" className="listaNotizie">
@@ -74,7 +82,9 @@ const LinkedinNotizie = () => {
             <h6>SONDAGGIO: cosa mangia Franchino?</h6>
           </div>
           <small>
-            <p className="fw-light" id="dataNotizie">5 giorni fa · 506 lettori</p>
+            <p className="fw-light" id="dataNotizie">
+              5 giorni fa · 506 lettori
+            </p>
           </small>
         </a>
       </div>

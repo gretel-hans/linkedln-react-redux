@@ -1,13 +1,9 @@
-
-
 import { useState } from "react";
 import { Button, Card, Col, ListGroup, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-
 const PeopleWhoMightKnow = () => {
-
   const profiles = useSelector((state) => state.profiles.profiles);
   const [visibleProfiles, setVisibleProfiles] = useState(4);
   const [showMore, setShowMore] = useState(true);
@@ -65,7 +61,7 @@ const PeopleWhoMightKnow = () => {
     >
       <path d="M15 11L8 6.39 1 11V8.61L8 4l7 4.61z"></path>
     </svg>
-  )
+  );
 
   return (
     <Card className="mb-2">
@@ -75,41 +71,51 @@ const PeopleWhoMightKnow = () => {
           <em>Dalla tua scuola o dalla tua università</em>
         </p>
         {profiles.slice(8, visibleProfiles + 8).map((profile) => (
-        <ListGroup.Item key={profile._id}>
-          <Row className="d-flex justify-content-start">
-            <Col xs={2} className="p-0 p-sm-2">
-            <img
-                  src={profile.image}
-                  alt={profile.name}
-                  style={{ width: "50px" }}
-                  className="rounded-circle"
-                  onError={(e)=>{
-                    e.currentTarget.src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'
-                }}
-                />
-            </Col>
-            <Col xs={10}>
-              <div>
-                <h6 className="mb-1">{profile.name}&nbsp;{profile.surname}</h6>
-                <p className="mb-1">
-                {profile.title}
-                </p>
-                <Link to={'/profile/' + profile._id}>
-                <Button
-                  variant="outline-secondary"
-                  className="rounded-pill px-3 py-1 btn-profile"
-                >
-                  {connectSvg}
-                  &nbsp;Collegati
-                </Button>
+          <ListGroup.Item key={profile._id}>
+            <Row className="d-flex justify-content-start">
+              <Col xs={2} className="p-0 p-sm-2">
+                <Link to={`/profile/${profile._id}`}>
+                  <img
+                    src={profile.image}
+                    alt={profile.name}
+                    style={{ width: "50px" }}
+                    className="rounded-circle"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png";
+                    }}
+                  />
                 </Link>
-              </div>
-            </Col>
-          </Row>
-        </ListGroup.Item>
+              </Col>
+              <Col xs={10}>
+                <div>
+                  <h6 className="mb-1">
+                    {" "}
+                    <Link
+                      to={`/profile/${profile._id}`}
+                      className="postUserName"
+                    >
+                      {" "}
+                      {profile.name}&nbsp;{profile.surname}
+                    </Link>
+                  </h6>
+                  <p className="mb-1">{profile.title}</p>
+                  <Link to={"/profile/" + profile._id}>
+                    <Button
+                      variant="outline-secondary"
+                      className="rounded-pill px-3 py-1 btn-profile"
+                    >
+                      {connectSvg}
+                      &nbsp;Collegati
+                    </Button>
+                  </Link>
+                </div>
+              </Col>
+            </Row>
+          </ListGroup.Item>
         ))}
       </ListGroup>
-        <Card.Footer id="showMore" onClick={handleShowMore}>
+      <Card.Footer id="showMore" onClick={handleShowMore}>
         {showMore ? (
           <>Visualizza altro {showMoreSvg}</>
         ) : (

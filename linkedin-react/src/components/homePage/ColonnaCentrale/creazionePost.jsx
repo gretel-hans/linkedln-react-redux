@@ -4,7 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-
 const CreazionePost = () => {
   const [show, setShow] = useState(false);
   const [comment, setComment] = useState(undefined);
@@ -16,7 +15,7 @@ const CreazionePost = () => {
   const formData = new FormData();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  let file=null
+  let file = null;
 
   const sendComment = async () => {
     try {
@@ -32,19 +31,18 @@ const CreazionePost = () => {
         }
       );
 
-      if(response1.ok&&!file){
+      if (response1.ok && !file) {
         dispatch({
           type: "UPDATE_COUNTER",
           payload: counter + 1,
         });
       }
 
-      if (response1.ok&&file) {
+      if (response1.ok && file) {
         const data1 = await response1.json();
         const postId = data1._id;
-  
+
         if (formData.has("post")) {
-  
           const response2 = await fetch(
             `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
             {
@@ -57,7 +55,7 @@ const CreazionePost = () => {
           );
 
           if (response2.ok) {
-           // const data2 = await response2.json();
+            // const data2 = await response2.json();
             //console.log(data2);
             dispatch({
               type: "UPDATE_COUNTER",
@@ -184,7 +182,7 @@ const CreazionePost = () => {
                 <Form.Control
                   type="file"
                   onChange={(e) => {
-                     file = e.target.files[0];
+                    file = e.target.files[0];
                     formData.append("post", file);
                   }}
                 />
@@ -356,7 +354,9 @@ const CreazionePost = () => {
                 <button
                   type="button"
                   className="rounded-pill px-3 py-1 btn btn-primary me-2"
-                  disabled={comment===undefined || comment==='' ? true : false}
+                  disabled={
+                    comment === undefined || comment === "" ? true : false
+                  }
                   onClick={() => {
                     handleClose();
                     setComment(undefined);
@@ -391,7 +391,9 @@ const CreazionePost = () => {
                 <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm1 13a1 1 0 01-.29.71L16 14l-2 2-6-6-4 4V7a1 1 0 011-1h14a1 1 0 011 1zm-2-7a2 2 0 11-2-2 2 2 0 012 2z"></path>
               </svg>
             </li-icon>
-            <span className="artdeco-button__text d-none d-lg-inline">Foto</span>
+            <span className="artdeco-button__text d-none d-lg-inline">
+              Foto
+            </span>
           </button>
 
           <button id="showMore" className="postButtonContainer py-2">
@@ -413,7 +415,9 @@ const CreazionePost = () => {
                 <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm-9 12V8l6 4z"></path>
               </svg>
             </li-icon>
-            <span className="artdeco-button__text d-none d-lg-inline">Video</span>
+            <span className="artdeco-button__text d-none d-lg-inline">
+              Video
+            </span>
           </button>
 
           <button id="showMore" className="postButtonContainer py-2">
@@ -431,7 +435,9 @@ const CreazionePost = () => {
                 <path d="M3 3v15a3 3 0 003 3h12a3 3 0 003-3V3zm13 1.75A1.25 1.25 0 1114.75 6 1.25 1.25 0 0116 4.75zm-8 0A1.25 1.25 0 116.75 6 1.25 1.25 0 018 4.75zM19 18a1 1 0 01-1 1H6a1 1 0 01-1-1V9h14zm-5.9-3a1 1 0 00-1-1H12a3.12 3.12 0 00-1 .2l-1-.2v-3h3.9v1H11v1.15a3.7 3.7 0 011.05-.15 1.89 1.89 0 012 1.78V15a1.92 1.92 0 01-1.84 2H12a1.88 1.88 0 01-2-1.75 1 1 0 010-.25h1a.89.89 0 001 1h.1a.94.94 0 001-.88z"></path>
               </svg>
             </li-icon>
-            <span className="artdeco-button__text d-none d-lg-inline">Evento</span>
+            <span className="artdeco-button__text d-none d-lg-inline">
+              Evento
+            </span>
           </button>
 
           <button id="showMore" className="postButtonContainer py-2">
@@ -449,7 +455,9 @@ const CreazionePost = () => {
                 <path d="M21 3v2H3V3zm-6 6h6V7h-6zm0 4h6v-2h-6zm0 4h6v-2h-6zM3 21h18v-2H3zM13 7H3v10h10z"></path>
               </svg>
             </li-icon>
-            <span className="artdeco-button__text d-none d-lg-inline">Scrivi un articolo</span>
+            <span className="artdeco-button__text d-none d-lg-inline">
+              Scrivi un articolo
+            </span>
           </button>
         </div>
       </div>

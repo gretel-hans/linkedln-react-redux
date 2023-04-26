@@ -5,9 +5,24 @@ const Scopri = () => {
     <Card className="mb-2" id="scopriSticky">
       <Row className="d-flex align-items-center p-2 flex-nowrap">
         <Col xs={10}>
-          <p style={{cursor:"pointer"}} className="linkHome text-primary mb-2">Gruppi</p>
-          <p style={{cursor:"pointer"}} className="linkHome text-primary mb-2">Eventi</p>
-          <p style={{cursor:"pointer"}} className="linkHome text-primary mb-1">Hashtag seguiti</p>
+          <p
+            style={{ cursor: "pointer" }}
+            className="linkHome text-primary mb-2"
+          >
+            Gruppi
+          </p>
+          <p
+            style={{ cursor: "pointer" }}
+            className="linkHome text-primary mb-2"
+          >
+            Eventi
+          </p>
+          <p
+            style={{ cursor: "pointer" }}
+            className="linkHome text-primary mb-1"
+          >
+            Hashtag seguiti
+          </p>
         </Col>
         <Col xs={2}>
           <div className="plusIcon">

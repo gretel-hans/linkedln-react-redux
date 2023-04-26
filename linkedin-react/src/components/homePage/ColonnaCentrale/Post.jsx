@@ -7,7 +7,6 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 const formData = new FormData();
 
-
 const Post = ({ post }) => {
   const dispatch = useDispatch();
   const idUser = useSelector((state) => state.myInfo.myInfo._id);
@@ -15,7 +14,7 @@ const Post = ({ post }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [like, setLike] = useState(false);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [postId, setPostId] = useState(null);
   const myInfo = useSelector((state) => state.myInfo.myInfo);
   const counter = useSelector((state) => state.counter.counter);
@@ -26,7 +25,7 @@ const Post = ({ post }) => {
   let day = date.getDate();
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  
+
   const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}`;
 
   const eliminationPost = (id) => {
@@ -67,14 +66,14 @@ const Post = ({ post }) => {
           body: JSON.stringify({ text: comment }),
         }
       );
-      if(response.ok && !file){
+      if (response.ok && !file) {
         alert("Hai modificato correttamente il tuo post!");
-          dispatch({
-            type: "UPDATE_COUNTER",
-            payload: counter + 1,
-          });
+        dispatch({
+          type: "UPDATE_COUNTER",
+          payload: counter + 1,
+        });
       }
-  
+
       if (response.ok && file) {
         const response2 = await fetch(
           `https://striveschool-api.herokuapp.com/api/posts/${postId}`,
@@ -86,7 +85,7 @@ const Post = ({ post }) => {
             body: formData,
           }
         );
-  
+
         if (response2.ok) {
           alert("Hai modificato correttamente il tuo post.");
           dispatch({
@@ -94,7 +93,7 @@ const Post = ({ post }) => {
             payload: counter + 1,
           });
         }
-      } 
+      }
     } catch (error) {
       console.log("ERROR", error);
     }
@@ -121,13 +120,12 @@ const Post = ({ post }) => {
               </Link>
             </Col>
             <Col xs={9} md={10} lg={11}>
-              
-                <p className="m-0 fw-bold postUserName">
-<Link to={`/profile/${post.user._id}`} className="postUserName">
+              <p className="m-0 fw-bold postUserName">
+                <Link to={`/profile/${post.user._id}`} className="postUserName">
                   {post.user.name} {post.user.surname}
-</Link>
-                </p>
-              
+                </Link>
+              </p>
+
               <small className="text-muted">{post.user.title}</small>
               <br></br>
               <small className="text-muted">{formattedDate}</small>
@@ -135,11 +133,21 @@ const Post = ({ post }) => {
           </Row>
         </Card>
         <Card.Text>{post.text}</Card.Text>
-        {post.image ? <img className="img-fluid" src={post.image} alt="img" /> : null}
+        {post.image ? (
+          <img className="img-fluid" src={post.image} alt="img" />
+        ) : null}
       </Card.Body>
       <Card.Footer>
         <Row xs={4}>
-          <Col id="showMore" className="px-0 py-2 text-center postButton" onClick={() => setLike(!like)} style={{color: like ? 'blue' : null, fontWeight: like ? 'bold' : null}}>
+          <Col
+            id="showMore"
+            className="px-0 py-2 text-center postButton"
+            onClick={() => setLike(!like)}
+            style={{
+              color: like ? "blue" : null,
+              fontWeight: like ? "bold" : null,
+            }}
+          >
             <i className="bi bi-hand-thumbs-up me-2"></i>
             <span className="d-none d-lg-inline">Consiglia</span>
           </Col>
@@ -158,12 +166,15 @@ const Post = ({ post }) => {
           {idUser === post.user._id && (
             <>
               <Col className="px-0 text-center">
-              <Dropdown className="dropdownEdit">
-                    <Dropdown.Toggle id="dropdown-basic" className="drop d-flex align-items-center">
+                <Dropdown className="dropdownEdit">
+                  <Dropdown.Toggle
+                    id="dropdown-basic"
+                    className="drop d-flex align-items-center"
+                  >
                     <i className="bi bi-three-dots me-2 fs-5 text-dark"></i>
-                    </Dropdown.Toggle>
+                  </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
+                  <Dropdown.Menu>
                     <span
                       className="dropdown-item"
                       role="button"
@@ -194,8 +205,8 @@ const Post = ({ post }) => {
                     >
                       <span>Elimina post</span>
                     </span>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Col>
               <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -486,4 +497,3 @@ const Post = ({ post }) => {
 };
 
 export default Post;
-

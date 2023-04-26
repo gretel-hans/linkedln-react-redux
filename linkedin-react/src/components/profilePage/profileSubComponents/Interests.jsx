@@ -36,9 +36,12 @@ const Interests = () => {
               <div>
                 <h6 className="mb-1">Epicode</h6>
                 <p className="mb-1">
-                Formiamo i nuovi talenti del tech e acceleriamo la loro carriera epica.
+                  Formiamo i nuovi talenti del tech e acceleriamo la loro
+                  carriera epica.
                 </p>
-                <p><small>5.518 follower</small></p>
+                <p>
+                  <small>5.518 follower</small>
+                </p>
                 <Button
                   variant="outline-secondary"
                   className="rounded-pill px-3 py-1 btn-profile"
@@ -63,10 +66,10 @@ const Interests = () => {
             <Col xs={10}>
               <div>
                 <h6 className="mb-1">Google</h6>
-                <p className="mb-1">
-                  Tecnologia, informazioni e internet
+                <p className="mb-1">Tecnologia, informazioni e internet</p>
+                <p>
+                  <small>28 Mln follower</small>
                 </p>
-                <p><small>28 Mln follower</small></p>
                 <Button
                   variant="outline-secondary"
                   className="rounded-pill px-3 py-1 btn-profile"
