@@ -6,8 +6,8 @@ const HomeProfile = () => {
   const myInfo = useSelector((state) => state.myInfo.myInfo);
   //console.log('myInfo',myInfo);
 
-  const randomNum100 = Math.floor(Math.random() * 100) + 1;
-  const randomNum500 = Math.floor(Math.random() * 500) + 1;
+  //const randomNum100 = Math.floor(Math.random() * 100) + 1;
+  //const randomNum500 = Math.floor(Math.random() * 500) + 1;
 
   return (
     <Card className="mb-2">
