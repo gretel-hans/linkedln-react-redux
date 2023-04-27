@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 const CustomNavbar = () => {
   const mySecondInfo = useSelector((state) => state.myInfo.myInfo);
+  const counter = useSelector((state) => state.counter.counter);
   const dispatch = useDispatch();
 
   const getMyInfo = async () => {
@@ -37,7 +38,7 @@ const CustomNavbar = () => {
   useEffect(() => {
     getMyInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [counter]);
 
   return (
     <Navbar bg="light" variant="light" className="fixed-top border py-0">

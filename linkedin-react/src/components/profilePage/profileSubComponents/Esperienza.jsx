@@ -80,10 +80,7 @@ const Esperienza = () => {
             }
           );
           if (responseImg.ok) {
-            alert("You have added your new experience!");
             setCounter(counter + 1);
-          } else {
-            alert("ERROR you haven't added your new experience...");
           }
         }
       }
@@ -106,10 +103,8 @@ const Esperienza = () => {
         }
       );
       if (response.ok) {
-        alert("Your profile pic has been changed!");
+        alert("La foto dell'esperienza è stata modificata!");
         setCounter(counter + 1);
-      } else {
-        return new Error("Errore nella fetch");
       }
     } catch (err) {
       console.log(err);
@@ -158,8 +153,6 @@ const Esperienza = () => {
         if (response.ok) {
           alert("La tua esperienza è stata rimossa con successo!");
           setCounter(counter + 1);
-        } else {
-          alert("Errore la tua esperienza non è stata rimossa...");
         }
       })
       .catch((error) => console.log("ERRORE", error));
@@ -194,7 +187,6 @@ const Esperienza = () => {
             body: ModifyFormData,
           }
         );
-
         if (response2.ok) {
           alert("Hai modificato correttamente la tua esperienza.");
           setCounter(counter + 1);

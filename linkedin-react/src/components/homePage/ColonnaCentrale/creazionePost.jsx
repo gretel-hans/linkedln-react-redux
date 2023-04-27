@@ -61,12 +61,8 @@ const CreazionePost = () => {
               type: "UPDATE_COUNTER",
               payload: counter + 1,
             });
-          } else {
-            throw new Error("Errore nella pubblicazione del post");
           }
         }
-      } else {
-        alert("Errore nella pubblicazione del post");
       }
     } catch (error) {
       console.log("ERROR", error);

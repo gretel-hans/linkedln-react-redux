@@ -29,13 +29,11 @@ const ProfileBigCard = () => {
         }
       );
       if (response.ok) {
-        alert("Your profile pic has been changed!");
+        alert("La tua foto profilo è stata modificata!");
         dispatch({
           type: "UPDATE_COUNTER",
           payload: counter + 1,
         });
-      } else {
-        return new Error("Errore nella fetch");
       }
     } catch (err) {
       console.log(err);

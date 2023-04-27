@@ -44,8 +44,6 @@ const ProfilePage = () => {
           type: "SAVE_MY_INFO",
           payload: data,
         });
-      } else {
-        return new Error("Errore nella fetch");
       }
     } catch (err) {
       console.log(err);

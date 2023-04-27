@@ -52,7 +52,7 @@ const HomeProfile = () => {
               Chi ha visualizzato il tuo profilo?
             </Col>
             <Col xs={4} className="text-primary sidebarText text-end">
-              {randomNum100}
+              50
             </Col>
           </Row>
           <Row className="d-flex justify-content-between">
@@ -60,7 +60,7 @@ const HomeProfile = () => {
               Visualizzazioni del tuo post
             </Col>
             <Col xs={4} className="text-primary sidebarText text-end">
-              {randomNum500}
+              70
             </Col>
           </Row>
         </ListGroup.Item>

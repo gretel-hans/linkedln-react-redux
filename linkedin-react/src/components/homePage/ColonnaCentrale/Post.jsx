@@ -46,8 +46,6 @@ const Post = ({ post }) => {
               payload: counter + 1,
             })
           );
-        } else {
-          alert("Errore nell'eliminazione del post");
         }
       })
       .catch((error) => console.log("ERROR", error));
